@@ -1,157 +1,183 @@
-
-# Game Production Manager - Django Framework
+# Game Production Manager
 
 Sistema de gestión de proyectos de videojuegos desarrollado con Django que permite a los usuarios administrar proyectos, assets, tareas y etiquetas de manera eficiente y organizada.
 
+![Django](https://img.shields.io/badge/Django-5.2.7-092E20?style=for-the-badge&logo=django&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+
 ## Descripción del Proyecto
 
-Este proyecto forma parte de la Evaluación de Portafolio del Módulo 7 del Bootcamp Desarrollo Full Stack de Python. Permite crear, visualizar, editar y eliminar proyectos, assets, tareas y etiquetas. Se implementan funcionalidades completas de CRUD, validación de formularios y navegación con templates heredados, siguiendo las buenas prácticas del framework Django.
+Este proyecto forma parte de la **Evaluación de Portafolio del Módulo 7** del Bootcamp Desarrollo Full Stack de Python. Implementa un sistema completo de gestión de producción de videojuegos con operaciones CRUD, validación de formularios, relaciones entre modelos y una interfaz moderna y responsiva.
 
 ## Características Principales
 
 ### Gestión de Proyectos
 
-* Crear nuevos proyectos con nombre, descripción, fechas, estado y detalle del proyecto (plataforma, engine, tamaño del equipo).
-* Visualizar lista completa de proyectos con información resumida.
-* Ver detalle de cada proyecto junto con sus assets y tareas asociados.
-* Editar proyectos existentes.
-* Eliminar proyectos con confirmación.
+* Crear nuevos proyectos con información detallada (nombre, descripción, fechas, estado)
+* Gestión de detalles técnicos (plataforma, engine, tamaño del equipo)
+* Visualización en cards modernas con estadísticas en tiempo real
+* Vista de detalle con assets y tareas asociadas
+* Edición y eliminación con confirmación de seguridad
 
 ### Gestión de Assets
 
-* Crear, editar y eliminar assets asociados a proyectos.
-* Visualizar assets relacionados a cada proyecto.
-* Clasificación de assets por tipo (sprite, audio, música, 3D, otro).
+* Crear, editar y eliminar assets vinculados a proyectos
+* Clasificación por tipo: Sprite, Audio, Música, Modelo 3D, Otro
+* Iconos visuales diferenciados por tipo de asset
+* Asociación directa con proyectos específicos
 
 ### Gestión de Tareas y Etiquetas
 
-* Crear, editar y eliminar tareas asociadas a proyectos.
-* Gestionar etiquetas y asociarlas a tareas.
-* Visualizar tareas por proyecto y sus etiquetas correspondientes.
-* Seguimiento del estado y prioridad de las tareas.
+* Sistema completo de tareas con prioridades (Baja, Media, Alta)
+* Estados de seguimiento (Pendiente, En Proceso, Completada)
+* Sistema de etiquetas para categorización flexible
+* Relaciones muchos a muchos entre tareas y etiquetas
+* Badges de colores para identificación visual rápida
 
 ### Seguridad y Validación
 
-* Validación de datos mediante Django Forms.
-* Tokens CSRF en todos los formularios.
-* Protección de URLs mediante `get_object_or_404` para evitar errores.
-* Mensajes de éxito y errores visibles al usuario.
+* Validación completa mediante Django Forms
+* Protección CSRF en todos los formularios
+* Uso de `get_object_or_404` para manejo seguro de errores
+* Mensajes informativos de éxito y error al usuario
+* Templates de confirmación para acciones críticas
 
-### Interfaz de Usuario
+### Interfaz de Usuario Moderna
 
-* Diseño responsivo con Bootstrap 5.3.
-* Navegación intuitiva mediante navbar.
-* Plantillas con herencia (`base.html`) para evitar duplicación de código.
-* Cards visuales para proyectos, assets y tareas con colores diferenciados.
+* Diseño responsivo con Bootstrap 5.3 y CSS personalizado
+* Gradientes modernos en navbar y hero section
+* Cards con animaciones hover y transiciones suaves
+* Iconos de Bootstrap Icons en toda la aplicación
+* Paleta de colores profesional y coherente
+* Sistema de templates con herencia para código DRY
+* Estadísticas visuales en dashboard principal
 
 ## Tecnologías Utilizadas
 
-* Python 3.12
-* Django 5.2.7
-* Bootstrap 5.3 (CDN)
-* MySQL
-* HTML5 / CSS3
-* Git / GitHub
+* **Backend:** Python 3.12 + Django 5.2.7
+* **Frontend:** HTML5, CSS3 (custom), Bootstrap 5.3
+* **Base de Datos:** MySQL 8.0
+* **Iconos:** Bootstrap Icons 1.10.5
+* **Tipografía:** Google Fonts (Inter)
+* **Control de versiones:** Git / GitHub
 
 ## Arquitectura del Proyecto
 
-El proyecto sigue el patrón MVT (Model-View-Template) de Django:
+El proyecto sigue el patrón **MVT (Model-View-Template)** de Django:
 
-* **Models** : Definición de Proyecto, DetalleProyecto, Asset, Tarea y Etiqueta.
-* **Views** : Lógica para CRUD de proyectos, assets, tareas y etiquetas.
-* **Templates** : Interfaces HTML dinámicas con herencia de `base.html`.
-* **Forms** : Validación y procesamiento de datos.
-* **Admin** : Configuración y personalización del panel de administración.
+* **Models:** Definición de entidades (Proyecto, DetalleProyecto, Asset, Tarea, Etiqueta)
+* **Views:** Lógica de negocio para operaciones CRUD
+* **Templates:** Interfaces HTML dinámicas con herencia
+* **Forms:** Validación y procesamiento de datos de usuario
+* **Admin:** Panel de administración personalizado de Django
 
 ## Requisitos Previos
 
 * Python 3.8 o superior
 * pip (gestor de paquetes de Python)
+* MySQL 8.0 o superior
 * Git
 
 ## Instalación y Configuración
 
-1. Clonar el repositorio:
+### 1. Clonar el repositorio
 
-<pre class="overflow-visible!" data-start="2830" data-end="2923"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"></div></pre>
+```bash
+git clone https://github.com/Linwi-V/GameProductionManager.git
+cd game_production
+```
 
-<pre class="overflow-visible!" data-start="2830" data-end="2923"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>git </span><span>clone</span><span> https://github.com/Linwi-V/GameProductionManager.git
-</span><span>cd</span><span> game_production
-</span></span></code></div></div></pre>
-
-2. Crear y activar entorno virtual:
+### 2. Crear y activar entorno virtual
 
 **En Windows:**
 
-<pre class="overflow-visible!" data-start="2980" data-end="3033"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"></div></pre>
-
-<pre class="overflow-visible!" data-start="2980" data-end="3033"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>python -m venv venv
+```bash
+python -m venv venv
 venv\Scripts\activate
-</span></span></code></div></div></pre>
+```
 
 **En Mac/Linux:**
 
-<pre class="overflow-visible!" data-start="3055" data-end="3112"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"></div></pre>
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
-<pre class="overflow-visible!" data-start="3055" data-end="3112"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>python3 -m venv venv
-</span><span>source</span><span> venv/bin/activate
-</span></span></code></div></div></pre>
+### 3. Instalar dependencias
 
-3. Instalar dependencias:
+```bash
+pip install -r requirements.txt
+```
 
-<pre class="overflow-visible!" data-start="3142" data-end="3185"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"></div></pre>
+### 4. Configurar base de datos
 
-<pre class="overflow-visible!" data-start="3142" data-end="3185"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>pip install -r requirements.txt
-</span></span></code></div></div></pre>
+Asegúrate de tener MySQL corriendo y configura las credenciales en `settings.py`:
 
-4. Ejecutar migraciones:
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'game_production_db',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+```
 
-<pre class="overflow-visible!" data-start="3214" data-end="3250"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"></div></pre>
+### 5. Ejecutar migraciones
 
-<pre class="overflow-visible!" data-start="3214" data-end="3250"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>python manage.py migrate
-</span></span></code></div></div></pre>
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
 
-5. Crear superusuario para acceder al admin:
+### 6. Crear superusuario
 
-<pre class="overflow-visible!" data-start="3299" data-end="3343"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"></div></pre>
+```bash
+python manage.py createsuperuser
+```
 
-<pre class="overflow-visible!" data-start="3299" data-end="3343"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>python manage.py createsuperuser
-</span></span></code></div></div></pre>
+### 7. Ejecutar servidor de desarrollo
 
-6. Ejecutar servidor de desarrollo:
+```bash
+python manage.py runserver
+```
 
-<pre class="overflow-visible!" data-start="3383" data-end="3421"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"></div></pre>
+### 8. Acceder a la aplicación
 
-<pre class="overflow-visible!" data-start="3383" data-end="3421"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>python manage.py runserver
-</span></span></code></div></div></pre>
-
-7. Acceder a la aplicación:
-
-* Aplicación principal: `http://127.0.0.1:8000/`
-* Panel de administración: `http://127.0.0.1:8000/admin/`
+* **Aplicación principal:** http://127.0.0.1:8000/
+* **Panel de administración:** http://127.0.0.1:8000/admin/
 
 ## Estructura del Proyecto
 
-<pre class="overflow-visible!" data-start="3594" data-end="4648"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"></div></pre>
-
-<pre class="overflow-visible!" data-start="3594" data-end="4648"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre!"><span><span>game_production/
+```
+game_production/
 ├── manage.py
 ├── requirements.txt
 ├── README.md
-├── game_production/           </span><span># Configuración del proyecto</span><span>
+├── game_production/              # Configuración del proyecto
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py
-└── produccion/                </span><span># Aplicación principal</span><span>
-    ├── models.py              </span><span># Modelos Proyecto, DetalleProyecto, Asset, Tarea, Etiqueta</span><span>
-    ├── views.py               </span><span># Lógica de vistas CRUD</span><span>
-    ├── urls.py                </span><span># URLs de la aplicación</span><span>
-    ├── forms.py               </span><span># Formularios Django</span><span>
-    ├── admin.py               </span><span># Configuración del panel admin</span><span>
+└── produccion/                   # Aplicación principal
+    ├── models.py                 # Modelos de datos
+    ├── views.py                  # Lógica de vistas CRUD
+    ├── urls.py                   # Rutas de la aplicación
+    ├── forms.py                  # Formularios Django
+    ├── admin.py                  # Configuración del panel admin
+    ├── static/
+    │   └── produccion/
+    │       └── css/
+    │           └── styles.css    # Estilos personalizados
     └── templates/
         └── produccion/
-            ├── </span><span>base</span><span>.html
-            ├── index.html
+            ├── base.html         # Template base
+            ├── index.html        # Dashboard principal
+            ├── confirmar_eliminacion.html
             ├── proyectos/
             │   ├── lista.html
             │   ├── formulario.html
@@ -165,50 +191,76 @@ venv\Scripts\activate
             └── etiquetas/
                 ├── lista.html
                 └── formulario.html
-</span></span></code></div></div></pre>
+```
 
 ## Funcionalidades Técnicas Implementadas
 
-* Sistema de plantillas con herencia (`base.html`) y bloques dinámicos.
-* Formularios Django con validación, CSRF y mensajes de error.
-* CRUD completo para proyectos, assets, tareas y etiquetas.
-* Panel admin personalizado.
-* Integración con Bootstrap para diseño responsivo.
-* Uso de relaciones 1-1, 1-N y N-M en modelos.
-* Mensajes de feedback al usuario (éxito/error) usando `messages`.
+### Sistema de Modelos
 
-## Seguridad Implementada
+* Relaciones **Uno a Uno** (Proyecto - DetalleProyecto)
+* Relaciones **Uno a Muchos** (Proyecto - Assets, Proyecto - Tareas)
+* Relaciones **Muchos a Muchos** (Tareas - Etiquetas)
+* Uso de `ForeignKey`, `OneToOneField` y `ManyToManyField`
 
-* Tokens CSRF en todos los formularios.
-* Validación de formularios y manejo de errores.
-* Uso de `get_object_or_404` para evitar errores 500.
-* Control de acceso preparado para autenticación futura.
+### Sistema de Vistas
 
-## Configuración para Producción
+* Vistas basadas en funciones (FBV)
+* Operaciones CRUD completas para todas las entidades
+* Manejo de formularios con validación
+* Sistema de mensajes de feedback al usuario
+* Protección con `get_object_or_404`
 
-* `DEBUG = True` para desarrollo, debe cambiarse a `False` en producción.
-* `ALLOWED_HOSTS` configurables.
-* `SECRET_KEY` debe colocarse en variables de entorno para mayor seguridad.
+### Sistema de Templates
+
+* Herencia de templates con `base.html`
+* Uso de bloques dinámicos (`{% block %}`)
+* Carga de archivos estáticos con `{% static %}`
+* Iteración con `{% for %}` y condicionales `{% if %}`
+* Filtros de Django (`truncatewords`, `date`, etc.)
+
+### Migraciones
+
+* Creación y aplicación de migraciones con `makemigrations` y `migrate`
+* Propagación de cambios en el esquema de base de datos
+* Manejo de relaciones entre tablas
+
+### ORM de Django
+
+* Consultas con `objects.all()`, `objects.count()`
+* Uso de `select_related()` y `prefetch_related()` para optimización
+* Filtrado y ordenamiento de datos
+* Métodos personalizados en modelos
+
+### Panel de Administración
+
+* Configuración personalizada con `admin.py`
+* Registro de todos los modelos
+* Interfaz para gestión rápida de datos
 
 ## Aprendizajes Clave
 
-* Arquitectura MVT de Django.
-* Implementación completa de CRUD.
-* Uso de Django Forms para validación.
-* Integración de Bootstrap con Django.
-* Manejo de relaciones FK y M2M.
-* Panel admin personalizado.
-* Buenas prácticas de documentación y control de versiones.
+* Arquitectura MVT (Model-View-Template) de Django
+* Implementación completa de operaciones CRUD
+* Validación de datos con Django Forms
+* Manejo de relaciones entre modelos (1-1, 1-N, N-M)
+* Sistema de templates con herencia
+* Integración de Bootstrap con Django
+* Optimización de consultas con ORM
+* Diseño de interfaces modernas con CSS personalizado
+* Buenas prácticas de seguridad web
+* Control de versiones con Git
 
 ## Autor
 
-**Linwi Vargas - Productor de Videojuegos Junior**
+**Linwi Vargas** - Productor de Videojuegos Junior
 
-* GitHub: @Linwi-V
-* LinkedIn: Linwi Vargas Campos
-* Itch.io: linwi.itch.io
+* GitHub: [@Linwi-V](https://github.com/Linwi-V)
+* LinkedIn: [Linwi Vargas Campos](https://www.linkedin.com/in/linwi-vargas)
+* Itch.io: [linwi.itch.io](https://linwi.itch.io)
 
-Proyecto desarrollado como parte del Bootcamp de Desarrollo Full Stack Python - Evaluación de Portafolio del Módulo 7.
+## Proyecto Académico
+
+Proyecto desarrollado como parte del **Bootcamp de Desarrollo Full Stack Python** - Evaluación de Portafolio del Módulo 7.
 
 ## Licencia
 

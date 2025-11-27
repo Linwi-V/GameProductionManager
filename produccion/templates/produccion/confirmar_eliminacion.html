@@ -1,0 +1,41 @@
+{% extends 'produccion/base.html' %}
+{% block title %}Confirmar Eliminación{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card card-custom">
+            <div class="card-header-custom">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                Confirmar Eliminación
+            </div>
+            <div class="card-body text-center py-5">
+                <i class="bi bi-trash" style="font-size: 4rem; color: #F56565;"></i>
+                
+                <h4 class="mt-4 mb-3">¿Estás seguro?</h4>
+                
+                <p class="text-muted mb-4">
+                    Estás a punto de eliminar {{ tipo }}: 
+                    <strong>"{{ objeto }}"</strong>
+                </p>
+                
+                <div class="alert alert-warning" role="alert">
+                    <i class="bi bi-info-circle me-2"></i>
+                    Esta acción no se puede deshacer
+                </div>
+
+                <form method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger me-2">
+                        <i class="bi bi-trash me-2"></i>Sí, eliminar
+                    </button>
+                    <a href="{% if tipo == 'proyecto' %}{% url 'lista_proyectos' %}{% elif tipo == 'asset' %}{% url 'lista_assets' %}{% elif tipo == 'tarea' %}{% url 'lista_tareas' %}{% elif tipo == 'etiqueta' %}{% url 'lista_etiquetas' %}{% endif %}" 
+                       class="btn btn-outline-secondary">
+                        <i class="bi bi-x-circle me-2"></i>Cancelar
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
