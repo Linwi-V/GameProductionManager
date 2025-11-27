@@ -237,6 +237,33 @@ game_production/
 * Registro de todos los modelos
 * Interfaz para gestión rápida de datos
 
+## Capturas de Pantalla
+
+### Dashboard Principal
+
+![Dashboard](screenshots/01-dashboard.png)
+*Vista principal con estadísticas en tiempo real y accesos rápidos*
+
+### Lista de Proyectos
+
+![Lista de Proyectos](screenshots/02-lista-proyectos.png)
+*Grid de cards modernas mostrando todos los proyectos con sus estadísticas*
+
+### Detalle de Proyecto
+
+![Detalle de Proyecto](screenshots/03-detalle-proyecto.png)
+*Vista detallada de un proyecto con sus assets y tareas asociadas*
+
+### Formulario de Creación
+
+![Formulario](screenshots/04-formulario.png)
+*Formulario con validaciones para crear nuevos proyectos*
+
+### Confirmación de Eliminación
+
+![Confirmación](screenshots/05-confirmacion-eliminar.png)
+*Modal de confirmación para acciones críticas de eliminación*
+
 ## Aprendizajes Clave
 
 * Arquitectura MVT (Model-View-Template) de Django
@@ -265,3 +292,5 @@ Proyecto desarrollado como parte del **Bootcamp de Desarrollo Full Stack Python*
 ## Licencia
 
 Este proyecto es de uso educativo como parte del portafolio de aprendizaje.
+
+**Nota:** Este README está diseñado para demostrar las competencias técnicas adquiridas durante el bootcamp y cumplir con los requerimientos de la evaluación del Módulo 7.
