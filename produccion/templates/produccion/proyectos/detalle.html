@@ -1,0 +1,89 @@
+{% extends 'produccion/base.html' %}
+
+{% block title %}{{ proyecto.nombre }} - Game Production{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">{{ proyecto.nombre }}</h1>
+
+<!-- Información principal del proyecto -->
+<div class="card mb-4 shadow-sm border-0" style="border-left: 5px solid #0d6efd; background-color: #f8f9fa;">
+    <div class="card-body">
+        <h5 class="card-title">{{ proyecto.nombre }}</h5>
+        <p class="card-text">{{ proyecto.descripcion }}</p>
+        <p>
+            <strong>Fecha Inicio:</strong> {{ proyecto.fecha_inicio }}<br>
+            <strong>Estado:</strong> {{ proyecto.get_estado_display }}
+        </p>
+    </div>
+</div>
+
+<!-- Detalles del proyecto -->
+{% if proyecto.detalle %}
+<div class="card mb-4 shadow-sm border-0" style="border-left: 5px solid #198754; background-color: #f8f9fa;">
+    <div class="card-body">
+        <h5 class="card-title">Detalles del Proyecto</h5>
+        <p>
+            <strong>Plataforma:</strong> {{ proyecto.detalle.plataforma }}<br>
+            <strong>Engine:</strong> {{ proyecto.detalle.engine }}<br>
+            <strong>Tamaño del equipo:</strong> {{ proyecto.detalle.tamaño_equipo }}
+        </p>
+    </div>
+</div>
+{% endif %}
+
+<!-- Assets -->
+<h3 class="mt-4 mb-3">Assets</h3>
+{% if proyecto.assets.all %}
+<div class="row row-cols-1 row-cols-md-2 g-4 mb-4">
+    {% for asset in proyecto.assets.all %}
+    <div class="col">
+        <div class="card h-100 shadow-sm border-0" style="border-left: 5px solid {% cycle '#0d6efd' '#198754' '#ffc107' '#dc3545' %}; background-color: #f8f9fa;">
+            <div class="card-body">
+                <h5 class="card-title">{{ asset.nombre }}</h5>
+                <p class="card-text">{{ asset.descripcion|default:"-" }}</p>
+                <p><strong>Tipo:</strong> {{ asset.get_tipo_display }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No hay assets asociados a este proyecto.</p>
+{% endif %}
+
+<!-- Tareas -->
+<h3 class="mt-4 mb-3">Tareas</h3>
+{% if proyecto.tareas.all %}
+<div class="row row-cols-1 row-cols-md-2 g-4 mb-4">
+    {% for tarea in proyecto.tareas.all %}
+    <div class="col">
+        <div class="card h-100 shadow-sm border-0" style="border-left: 5px solid {% cycle '#dc3545' '#ffc107' '#0d6efd' '#198754' %}; background-color: #f8f9fa;">
+            <div class="card-body">
+                <h5 class="card-title">{{ tarea.titulo }}</h5>
+                <p class="card-text">{{ tarea.descripcion|truncatewords:20 }}</p>
+                <p>
+                    <strong>Estado:</strong> {{ tarea.get_estado_display }}<br>
+                    <strong>Prioridad:</strong> {{ tarea.get_prioridad_display }}
+                </p>
+                {% if tarea.etiquetas.all %}
+                    <p>
+                        {% for etiqueta in tarea.etiquetas.all %}
+                            <span class="badge bg-secondary">{{ etiqueta.nombre }}</span>
+                        {% endfor %}
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No hay tareas asociadas a este proyecto.</p>
+{% endif %}
+
+<div class="mt-4">
+    <a href="{% url 'editar_proyecto' proyecto.id %}" class="btn btn-success">Editar Proyecto</a>
+    <a href="{% url 'lista_proyectos' %}" class="btn btn-secondary">Volver a Proyectos</a>
+</div>
+
+{% endblock %}

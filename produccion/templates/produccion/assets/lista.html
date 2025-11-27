@@ -1,0 +1,33 @@
+{% extends 'produccion/base.html' %}
+
+{% block title %}Assets - Game Production{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Assets</h1>
+
+<div class="d-flex justify-content-end mb-3">
+    <a href="{% url 'crear_asset' %}" class="btn btn-primary">+ Crear Asset</a>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for asset in assets %}
+    <div class="col">
+        <div class="card h-100 shadow-sm border-0" style="border-left: 5px solid {% cycle '#0d6efd' '#198754' '#ffc107' '#dc3545' %}; background-color: #f8f9fa;">
+            <div class="card-body">
+                <h5 class="card-title">{{ asset.nombre }}</h5>
+                <p class="card-text">{{ asset.descripcion|truncatewords:20 }}</p>
+                {% if asset.proyecto %}
+                <p class="mb-0"><strong>Proyecto:</strong> {{ asset.proyecto.nombre }}</p>
+                {% endif %}
+            </div>
+            <div class="card-body d-flex justify-content-between">
+                <a href="{% url 'editar_asset' asset.id %}" class="btn btn-outline-success btn-sm">Editar</a>
+                <a href="{% url 'eliminar_asset' asset.id %}" class="btn btn-outline-danger btn-sm">Eliminar</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No hay assets aún. ¡Crea uno nuevo!</p>
+    {% endfor %}
+</div>
+{% endblock %}

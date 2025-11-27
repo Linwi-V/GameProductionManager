@@ -1,0 +1,1 @@
+CREATE DATABASE game_production_db;
