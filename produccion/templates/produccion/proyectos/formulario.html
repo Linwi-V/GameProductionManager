@@ -3,46 +3,59 @@
 {% block title %}{{ titulo }}{% endblock %}
 
 {% block content %}
-<h1 class="mb-4">{{ titulo }}</h1>
+<div class="card card-custom fade-in">
+    <div class="card-header-custom">
+        <h3 class="mb-0">{{ titulo }}</h3>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form_proyecto.non_field_errors }}
+            {{ form_detalle.non_field_errors }}
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form_proyecto.non_field_errors }}
-    {{ form_detalle.non_field_errors }}
-
-    <div class="mb-3">
-        <h5>Información del Proyecto</h5>
-        {% for field in form_proyecto %}
-            <div class="mb-3">
-                <label class="form-label">{{ field.label }}</label>
-                {{ field }}
-                {% if field.help_text %}
-                    <div class="form-text">{{ field.help_text }}</div>
-                {% endif %}
-                {% for error in field.errors %}
-                    <div class="text-danger">{{ error }}</div>
+            <!-- Información del Proyecto -->
+            <div class="mb-4">
+                <h5>Información del Proyecto</h5>
+                {% for field in form_proyecto %}
+                    <div class="mb-3">
+                        <label class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.help_text %}
+                            <div class="form-text">{{ field.help_text }}</div>
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
                 {% endfor %}
             </div>
-        {% endfor %}
-    </div>
 
-    <div class="mb-3">
-        <h5>Detalle del Proyecto</h5>
-        {% for field in form_detalle %}
-            <div class="mb-3">
-                <label class="form-label">{{ field.label }}</label>
-                {{ field }}
-                {% if field.help_text %}
-                    <div class="form-text">{{ field.help_text }}</div>
-                {% endif %}
-                {% for error in field.errors %}
-                    <div class="text-danger">{{ error }}</div>
+            <!-- Detalle del Proyecto -->
+            <div class="mb-4">
+                <h5>Detalle del Proyecto</h5>
+                {% for field in form_detalle %}
+                    <div class="mb-3">
+                        <label class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.help_text %}
+                            <div class="form-text">{{ field.help_text }}</div>
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
                 {% endfor %}
             </div>
-        {% endfor %}
-    </div>
 
-    <button type="submit" class="btn btn-success">Guardar</button>
-    <a href="{% url 'lista_proyectos' %}" class="btn btn-secondary">Cancelar</a>
-</form>
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success-custom flex-grow-1">
+                    Guardar
+                </button>
+                <a href="{% url 'lista_proyectos' %}" class="btn btn-secondary flex-grow-1">
+                    Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}

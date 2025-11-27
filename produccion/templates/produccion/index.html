@@ -1,82 +1,86 @@
 {% extends 'produccion/base.html' %}
-
 {% block title %}Inicio - Game Production Manager{% endblock %}
 
 {% block content %}
-<div class="row text-center">
-    <div class="col-md-3 mb-4">
-        <div class="card shadow-sm h-100 bg-primary text-white hover-shadow">
-            <div class="card-body d-flex flex-column h-100 justify-content-between">
-                <div>
-                    <h5 class="card-title">Proyectos</h5>
-                    <p class="display-4">{{ total_proyectos }}</p>
-                    <p>Proyectos registrados en el sistema</p>
-                </div>
-                <a href="{% url 'lista_proyectos' %}" class="btn btn-dark btn-sm hover-btn mt-2">Ver Proyectos</a>
-            </div>
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="container text-center">
+        <h1 class="hero-title">
+            <i class="bi bi-controller me-3"></i>Game Production Manager
+        </h1>
+        <p class="hero-subtitle">Organiza tus proyectos de videojuegos como un profesional</p>
+    </div>
+</div>
+
+<!-- Estadísticas -->
+<div class="row g-4 mb-5">
+    <div class="col-md-3">
+        <div class="stat-card position-relative">
+            <i class="bi bi-folder-fill stat-icon"></i>
+            <div class="stat-number">{{ total_proyectos }}</div>
+            <div class="stat-label">Proyectos</div>
         </div>
     </div>
-    <div class="col-md-3 mb-4">
-        <div class="card shadow-sm h-100 bg-success text-white hover-shadow">
-            <div class="card-body d-flex flex-column h-100 justify-content-between">
-                <div>
-                    <h5 class="card-title">Assets</h5>
-                    <p class="display-4">{{ total_assets }}</p>
-                    <p>Todos los assets creados</p>
-                </div>
-                <a href="{% url 'lista_assets' %}" class="btn btn-light btn-sm hover-btn mt-2">Ver Assets</a>
-            </div>
+    <div class="col-md-3">
+        <div class="stat-card position-relative">
+            <i class="bi bi-file-earmark-image stat-icon"></i>
+            <div class="stat-number">{{ total_assets }}</div>
+            <div class="stat-label">Assets</div>
         </div>
     </div>
-    <div class="col-md-3 mb-4">
-        <div class="card shadow-sm h-100 bg-warning text-dark hover-shadow">
-            <div class="card-body d-flex flex-column h-100 justify-content-between">
-                <div>
-                    <h5 class="card-title">Tareas</h5>
-                    <p class="display-4">{{ total_tareas }}</p>
-                    <p>Tareas pendientes o completadas</p>
-                </div>
-                <a href="{% url 'lista_tareas' %}" class="btn btn-dark btn-sm hover-btn mt-2">Ver Tareas</a>
-            </div>
+    <div class="col-md-3">
+        <div class="stat-card position-relative">
+            <i class="bi bi-check2-square stat-icon"></i>
+            <div class="stat-number">{{ total_tareas }}</div>
+            <div class="stat-label">Tareas</div>
         </div>
     </div>
-    <div class="col-md-3 mb-4">
-        <div class="card shadow-sm h-100 bg-danger text-white hover-shadow">
-            <div class="card-body d-flex flex-column h-100 justify-content-between">
-                <div>
-                    <h5 class="card-title">Etiquetas</h5>
-                    <p class="display-4">{{ total_etiquetas }}</p>
-                    <p>Categorías y etiquetas definidas</p>
-                </div>
-                <a href="{% url 'lista_etiquetas' %}" class="btn btn-light btn-sm hover-btn mt-2">Ver Etiquetas</a>
-            </div>
+    <div class="col-md-3">
+        <div class="stat-card position-relative">
+            <i class="bi bi-tags-fill stat-icon"></i>
+            <div class="stat-number">{{ total_etiquetas }}</div>
+            <div class="stat-label">Etiquetas</div>
         </div>
     </div>
 </div>
 
-<script>
-    // Hover effect para las cards
-    document.querySelectorAll('.hover-shadow').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.classList.add('shadow-lg', 'scale-105');
-            card.style.transition = 'all 0.3s ease';
-        });
-        card.addEventListener('mouseleave', () => {
-            card.classList.remove('shadow-lg', 'scale-105');
-        });
-    });
-
-    // Hover effect para botones
-    document.querySelectorAll('.hover-btn').forEach(btn => {
-        btn.addEventListener('mouseenter', () => {
-            btn.classList.toggle('btn-dark');
-            btn.classList.toggle('btn-light');
-        });
-        btn.addEventListener('mouseleave', () => {
-            btn.classList.toggle('btn-dark');
-            btn.classList.toggle('btn-light');
-        });
-    });
-</script>
+<!-- Acciones Rápidas -->
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card card-custom">
+            <div class="card-header-custom">
+                <i class="bi bi-plus-circle me-2"></i>Crear Nuevo
+            </div>
+            <div class="card-body">
+                <a href="{% url 'crear_proyecto' %}" class="btn btn-primary-custom w-100 mb-2">
+                    <i class="bi bi-folder-plus me-2"></i>Nuevo Proyecto
+                </a>
+                <a href="{% url 'crear_asset' %}" class="btn btn-success-custom w-100 mb-2">
+                    <i class="bi bi-image me-2"></i>Nuevo Asset
+                </a>
+                <a href="{% url 'crear_tarea' %}" class="btn btn-custom btn-outline-secondary w-100">
+                    <i class="bi bi-check-square me-2"></i>Nueva Tarea
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card card-custom">
+            <div class="card-header-custom">
+                <i class="bi bi-grid-3x3-gap-fill me-2"></i>Acceso Rápido
+            </div>
+            <div class="card-body">
+                <a href="{% url 'lista_proyectos' %}" class="btn btn-outline-primary w-100 mb-2">
+                    <i class="bi bi-folder me-2"></i>Ver Todos los Proyectos
+                </a>
+                <a href="{% url 'lista_assets' %}" class="btn btn-outline-success w-100 mb-2">
+                    <i class="bi bi-file-earmark-image me-2"></i>Ver Todos los Assets
+                </a>
+                <a href="{% url 'lista_tareas' %}" class="btn btn-outline-warning w-100">
+                    <i class="bi bi-list-check me-2"></i>Ver Todas las Tareas
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
-

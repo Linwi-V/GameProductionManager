@@ -3,25 +3,37 @@
 {% block title %}{{ titulo }}{% endblock %}
 
 {% block content %}
-<h1 class="mb-4">{{ titulo }}</h1>
+<div class="card card-custom fade-in">
+    <div class="card-header-custom">
+        <h3 class="mb-0">{{ titulo }}</h3>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.non_field_errors }}
-    {% for field in form %}
-        <div class="mb-3">
-            <label class="form-label">{{ field.label }}</label>
-            {{ field }}
-            {% if field.help_text %}
+            {% for field in form %}
+            <div class="mb-3">
+                <label class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
                 <div class="form-text">{{ field.help_text }}</div>
-            {% endif %}
-            {% for error in field.errors %}
+                {% endif %}
+                {% for error in field.errors %}
                 <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
             {% endfor %}
-        </div>
-    {% endfor %}
 
-    <button type="submit" class="btn btn-success">Guardar</button>
-    <a href="{% url 'lista_assets' %}" class="btn btn-secondary">Cancelar</a>
-</form>
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success-custom flex-grow-1">
+                    Guardar
+                </button>
+                <a href="{% url 'lista_assets' %}" class="btn btn-secondary flex-grow-1">
+                    Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
