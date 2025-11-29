@@ -11,6 +11,58 @@ Sistema de gestión de proyectos de videojuegos desarrollado con Django que perm
 
 Este proyecto forma parte de la **Evaluación de Portafolio del Módulo 7** del Bootcamp Desarrollo Full Stack de Python. Implementa un sistema completo de gestión de producción de videojuegos con operaciones CRUD, validación de formularios, relaciones entre modelos y una interfaz moderna y responsiva.
 
+## Problemática Resuelta
+
+La gestión de producción de videojuegos presenta desafíos únicos en la coordinación de múltiples áreas (programación, arte, diseño, audio) y el seguimiento de assets digitales diversos. Los equipos, especialmente independientes y pequeños estudios, carecen de herramientas específicas accesibles que integren la gestión de proyectos con el control de assets técnicos.
+
+Este sistema resuelve:
+- **Centralización**: Toda la información del proyecto en un solo lugar
+- **Organización de assets**: Clasificación y seguimiento de recursos digitales por tipo
+- **Gestión de tareas**: Sistema de prioridades y estados adaptado a flujos de game development
+- **Visibilidad**: Dashboard con métricas en tiempo real del progreso del proyecto
+- **Accesibilidad**: Solución web gratuita y de código abierto
+
+## Enfoque de Desarrollo
+
+El proyecto siguió una metodología de desarrollo estructurada en las siguientes etapas:
+
+### 1. Análisis y Planificación
+- Identificación de necesidades específicas de producción de videojuegos
+- Definición de entidades principales: Proyectos, Assets, Tareas, Etiquetas
+- Diseño del modelo de datos con relaciones 1-1, 1-N y N-M
+
+### 2. Diseño de Arquitectura
+- Selección del patrón MVT de Django
+- Definición de estructura de modelos con relaciones complejas
+- Planificación de sistema de templates con herencia
+
+### 3. Desarrollo Iterativo
+- **Iteración 1**: Implementación de modelos y migraciones
+- **Iteración 2**: Desarrollo de operaciones CRUD para cada entidad
+- **Iteración 3**: Creación de sistema de formularios con validación
+- **Iteración 4**: Diseño de interfaz con Bootstrap personalizado
+- **Iteración 5**: Optimización de consultas ORM y refinamiento de UX
+
+### 4. Testing y Refinamiento
+- Pruebas de funcionalidad CRUD completas
+- Validación de relaciones entre modelos
+- Testing de interfaz en diferentes dispositivos
+- Corrección de bugs y mejoras de usabilidad
+
+### 5. Deployment
+- Configuración para entorno de producción
+- Migración de SQLite a MySQL
+- Deploy en Render con configuración de variables de entorno
+- Implementación de WhiteNoise para archivos estáticos
+
+### Buenas Prácticas Aplicadas
+- Uso de get_object_or_404 para manejo de errores
+- Protección CSRF en todos los formularios
+- Templates DRY con herencia
+- Mensajes de feedback al usuario
+- Código documentado y estructurado
+- Control de versiones con Git desde el inicio
+
 ## Características Principales
 
 ### Gestión de Proyectos
